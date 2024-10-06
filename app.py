@@ -121,4 +121,4 @@ def update_output(n_clicks, value1, value2, value3, value4):
 
 # Run the app
 if __name__ == '__main__':
-    app.run_server(debug=True, host='0.0.0.0', port=8080)
+    app.run_server(debug=True, host='0.0.0.0', port=7070)
