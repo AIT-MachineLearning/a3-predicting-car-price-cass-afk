@@ -25,7 +25,7 @@ jobs:
 
       - name: Run unit tests
         run: |
-          python -m unittest unit-test.py  # Ensure your test script name is correct
+          python -m unittest unittest.py  # Ensure your test script name is correct
 
   deploy:
     runs-on: ubuntu-latest
