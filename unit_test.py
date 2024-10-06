@@ -2,6 +2,8 @@ import unittest
 import joblib
 import numpy as np
 import pandas as pd
+import app as model
+
 
 class TestModel(unittest.TestCase):
     
