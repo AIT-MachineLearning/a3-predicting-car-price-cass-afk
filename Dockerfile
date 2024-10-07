@@ -9,6 +9,12 @@ COPY . /app
 
 # Install any needed packages specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
+RUN pip3 install dash[testing]
+RUN pip3 install pytest
+RUN pip install pytest-depends
+
+RUN pip install mlflow
+
 
 # Make port 7070 available to the world outside this container
 EXPOSE 7070
@@ -18,3 +24,4 @@ ENV NAME=DashApp
 
 # Use JSON format for CMD to avoid unintended behavior
 CMD ["python", "app.py"]
+
