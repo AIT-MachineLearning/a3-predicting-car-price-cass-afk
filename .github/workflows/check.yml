@@ -1,0 +1,41 @@
+name: checking but no deplot
+
+on:
+  push:
+    branches:
+      - main  # Trigger workflow on pushes to the main branch
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3  # Updated version
+
+      - name: Set up Python
+        uses: actions/setup-python@v4  # Updated version
+        with:
+          python-version: '3.8'  # Specify the Python version you want to use
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt  # Make sure you have a requirements.txt file
+
+      - name: Run unit tests
+        run: |
+          python -m unittest unit_test.py  # Ensure your test script name is correct
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test  # Deploy only if tests pass
+
+    steps:
+      - name: Pull Docker image
+        run: |
+          docker pull casschang02/ml-st125002-a3:latest  # Pull the latest image from DockerHub
+
+      - name: Run Docker container
+        run: |
+          docker run -d -p 7070:7070 casschang02/ml-st125002-a3:latest  # Adjust ports if needed
