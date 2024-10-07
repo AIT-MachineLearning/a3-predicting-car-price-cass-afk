@@ -1,4 +1,4 @@
-name: checking but no deplot
+name: checking but no deploy
 
 on:
   push:
@@ -38,4 +38,4 @@ jobs:
 
       - name: Run Docker container
         run: |
-          docker run -d -p 7070:7070 casschang02/ml-st125002-a3:latest  # Adjust ports if needed
+          docker run -d -p 7070:7070 casschang02/ml-st125002-a3:latest  
