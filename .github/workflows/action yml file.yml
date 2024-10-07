@@ -58,7 +58,7 @@ jobs:
         with:
           host: ${{ vars.HOST }}
           username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }} #djsfnjksedn
+          key: ${{ secrets.SSH_PRIVATE_KEY }} #priv key update
           proxy_host: ${{ vars.PROXY_HOST }}
           proxy_username: ${{ secrets.USERNAME }} 
           proxy_key: ${{ secrets.SSH_PRIVATE_KEY }}
