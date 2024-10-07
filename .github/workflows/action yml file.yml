@@ -65,4 +65,4 @@ jobs:
           script: |
             docker pull casschang02/ml-st125002-a3:latest
             docker compose -f st125002/docker-compose.yaml down --remove-orphans
-            docker compose -f st125002/assignment3/docker-compose.yaml up -d
+            docker compose -f st125002/docker-compose.yaml up -d
