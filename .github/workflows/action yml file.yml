@@ -22,11 +22,11 @@ jobs:
 
       # Build the Docker image for testing
       - name: Build Docker image for testing
-        run: docker build -t <image_name> -f code/Dockerfile code
+        run: docker build -t ml-st125002-a3 -f Dockerfile code
 
       # Run tests inside the Docker container
       - name: Run tests in Docker
-        run: docker run <image_name> pytest
+        run: docker run ml-st125002-a3 pytest
 
   build:
     runs-on: ubuntu-latest
@@ -44,10 +44,10 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       # Build the Docker image for the app
       - name: Build Docker image
-        run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/<image_name>:<image_tag> -f <path_to_docker_file> <build_context_folder>
+        run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/ml-st125002-a3:latest -f Dockerfile .
       # Push the image to DockerHub
       - name: Push Docker image to DockerHub
-        run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/<image_name>:<image_tag>
+        run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/ml-st125002-a3:latest
 
   deploy:
     needs: build
@@ -58,11 +58,11 @@ jobs:
         with:
           host: ${{ vars.HOST }}
           username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }} #djsfnjksedn
           proxy_host: ${{ vars.PROXY_HOST }}
-          proxy_username: ${{ secrets.USERNAME }}
-          proxy_key: ${{ secrets.PROXY_KEY }}
+          proxy_username: ${{ secrets.USERNAME }} 
+          proxy_key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            docker pull <docker_user_name>/<image_name>:<image_tag>
-            docker compose -f <st_ID>/docker-compose.yaml down --remove-orphans
-            docker compose -f <st_ID>/docker-compose.yaml up -d
+            docker pull casschang02/ml-st125002-a3:latest
+            docker compose -f st125002/docker-compose.yaml down --remove-orphans
+            docker compose -f st125002/docker-compose.yaml up -d
