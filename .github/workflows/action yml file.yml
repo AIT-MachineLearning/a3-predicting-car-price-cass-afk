@@ -61,7 +61,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }} #priv key update
           proxy_host: ${{ vars.PROXY_HOST }}
           proxy_username: ${{ secrets.USERNAME }} 
-          proxy_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          proxy_key: ${{ secrets.SSH_PRIVATE_KEY }} #trying again
           script: |
             docker pull casschang02/ml-st125002-a3:latest
             docker compose -f st125002/docker-compose.yaml down --remove-orphans
