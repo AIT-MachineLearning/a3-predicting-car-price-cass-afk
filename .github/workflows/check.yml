@@ -1,4 +1,4 @@
-name: checking but no deploy
+name: checking 
 
 on:
   push:
