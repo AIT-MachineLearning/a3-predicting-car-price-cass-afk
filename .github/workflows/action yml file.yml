@@ -60,7 +60,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }} #priv key update
           proxy_host: ${{ vars.PROXY_HOST }}
-          proxy_username: ${{ secrets.USERNAME }} #changing stuff in yaml
+          proxy_username: ${{ secrets.USERNAME }} #all docker composed down
           proxy_key: ${{ secrets.SSH_PRIVATE_KEY }} #trying again for the docker compose
           script: |
             docker pull casschang02/ml-st125002-a3:latest
