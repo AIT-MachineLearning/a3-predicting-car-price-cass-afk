@@ -119,6 +119,21 @@ def update_output(n_clicks, value1, value2, value3, value4):
 
     return "Waiting for input"
 
+def out_check(value1, value2, value3, value4):
+    input_data = pd.DataFrame([[value1, value2, value3, value4]],
+                                  columns=['engine', 'max_power', 'mileage', 'km_driven'])
+    scaled_data = scale_model.transform(input_data)
+
+        # Get the prediction from the model
+    prediction = pred_model.predict(scaled_data)
+    return (isinstance(int(prediction[0]), int))
+
+def input_check(value1, value2, value3, value4):
+    input_data = pd.DataFrame([[value1, value2, value3, value4]],
+                                  columns=['engine', 'max_power', 'mileage', 'km_driven'])
+
+    return (input_data)
+
 # Run the app
 if __name__ == '__main__':
     app.run_server(debug=True, host='0.0.0.0', port=7070)
