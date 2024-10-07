@@ -25,7 +25,7 @@ jobs:
 
       # Run tests inside the Docker container
       - name: Run tests in Docker
-        run: docker run casschang02/ml-125002-a3 pytest
+        run: docker run casschang02/ml-125002-a3 pytest 
 
   build:
     runs-on: ubuntu-latest
@@ -58,13 +58,12 @@ jobs:
       - name: SSH Remote Commands
         uses: appleboy/ssh-action@v1.0.0
         with:
-          host: ml.brain.cs.ait.ac.th  # Final destination server
-          username: ${{ secrets.USERNAME }}  # Your username for the final server
-          key: ${{ secrets.SSH_PRIVATE_KEY }}  # Your private key
-          password: ${{ secrets.REMOTE_PASSWORD }}
-          proxy_host: bazooka.cs.ait.ac.th  # Jump host
-          proxy_username: st125002  # Your username for the jump host
-          proxy_key: ${{ secrets.PROXY_KEY }}  # Your key for the jump host
+          host: ${{ vars.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }} #PROXY KEY
+          proxy_host: ${{ vars.PROXY_HOST }}
+          proxy_username: ${{ secrets.USERNAME }}
+          proxy_key: ${{ secrets.SSH_PRIVATE_KEY }} #PROXY KEY
           script: |
             docker pull casschang02/ml-st125002-a3:latest
             docker compose -f docker-compose.yaml down --remove-orphans
