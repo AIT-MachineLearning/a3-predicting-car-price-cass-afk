@@ -47,7 +47,7 @@ jobs:
         run: docker build -t ${{ secrets.DOCKER_USERNAME }}/ml-st125002-a3:latest -f Dockerfile .
       # Push the image to DockerHub
       - name: Push Docker image to DockerHub
-        run: docker push ${{ secrets.DOCKER_USERNAME }}/ml-st125002-a3:latest
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/ml-st125002-a3:latest #kfdijkse
 
   deploy:
     needs: build
